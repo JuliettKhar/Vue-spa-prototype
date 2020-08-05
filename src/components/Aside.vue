@@ -39,28 +39,28 @@
             this.$store.commit('SET_PAGE_COUNT', index + 1)
         }
 
-        mounted(): void {
-            this.onMenuItemClick(0)
-        }
 
-
-        @Watch('$route', { immediate: true })
+        @Watch('$route', {immediate: true})
         private onRouteChange(): void {
             if (this.$route.path.includes('about')) {
                 this.asideItems = routes[0].children[0].children || []
                 this.$store.commit('SET_ROUTES_LENGTH', this.asideItems.length)
+                this.$store.commit('SET_PAGE_COUNT', 1)
             }
             if (this.$route.path.includes('features')) {
                 this.asideItems = routes[0].children[1].children || []
                 this.$store.commit('SET_ROUTES_LENGTH', this.asideItems.length)
+                this.$store.commit('SET_PAGE_COUNT', 1)
             }
             if (this.$route.path.includes('penthouses')) {
                 this.asideItems = routes[0].children[2].children || []
                 this.$store.commit('SET_ROUTES_LENGTH', this.asideItems.length)
+                this.$store.commit('SET_PAGE_COUNT', 1)
             }
             if (this.$route.path.includes('choose')) {
                 this.asideItems = routes[0].children[3].children || []
                 this.$store.commit('SET_ROUTES_LENGTH', this.asideItems.length)
+                this.$store.commit('SET_PAGE_COUNT', 1)
             }
         }
     }
