@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["features"],{ae1c:function(e,t,n){"use strict";n.r(t);var a=function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("router-view")},c=[],r=n("9ab4"),u=n("60a3"),s=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return Object(r["b"])(t,e),t=Object(r["a"])([Object(u["a"])({name:"Features"})],t),t}(u["b"]),i=s,l=i,o=n("2877"),b=Object(o["a"])(l,a,c,!1,null,"2ecec775",null);t["default"]=b.exports}}]);
-//# sourceMappingURL=features.445c0edc.js.map
