@@ -1,4 +1,4 @@
-# app
+# Vue-spa-prototype
 
 ## Project setup
 ```
