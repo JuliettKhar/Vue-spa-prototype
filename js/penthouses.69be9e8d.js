@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["penthouses"],{"3ce8":function(e,t,n){"use strict";n.r(t);var c=function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("router-view")},u=[],r=n("9ab4"),s=n("60a3"),a=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return Object(r["b"])(t,e),t=Object(r["a"])([Object(s["a"])({name:"Penthouses"})],t),t}(s["b"]),o=a,i=o,l=n("2877"),b=Object(l["a"])(i,c,u,!1,null,"4c58515c",null);t["default"]=b.exports}}]);
+//# sourceMappingURL=penthouses.69be9e8d.js.map
