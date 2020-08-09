@@ -1,7 +1,7 @@
 <template>
 	<aside class="aside">
 		<ul class="aside__nav">
-			<li v-for="(route, index) in asideItems" :key="index" @click="onMenuItemClick(index)">
+			<li v-for="(route, index) in currentAsideRoutes" :key="index" @click="onMenuItemClick(index)">
 				<router-link
 					v-if="route.meta"
 					:to="{path: route.name, params: {name: route.name }}"
@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-    import {Component, Watch, Vue} from 'vue-property-decorator';
+    import {Component, Vue} from 'vue-property-decorator';
     import {routes} from "@/router/routes";
     import {RouteConfig} from "vue-router";
 
@@ -35,33 +35,20 @@
             this.isActive = value
         }
 
+        get currentAsideRoutes() {
+            const currRoutes = {}
+            routes[0].children.forEach((item) => {
+                currRoutes[item.name] = item?.children || []
+            })
+            return currRoutes[this.$route.path.split('/')[1]]
+        }
+
         onMenuItemClick(index: number): void {
             this.$store.commit('SET_PAGE_COUNT', index + 1)
         }
 
         mounted(): void {
             this.onMenuItemClick(0)
-        }
-
-
-        @Watch('$route', { immediate: true })
-        private onRouteChange(): void {
-            if (this.$route.path.includes('about')) {
-                this.asideItems = routes[0].children[0].children || []
-                this.$store.commit('SET_ROUTES_LENGTH', this.asideItems.length)
-            }
-            if (this.$route.path.includes('features')) {
-                this.asideItems = routes[0].children[1].children || []
-                this.$store.commit('SET_ROUTES_LENGTH', this.asideItems.length)
-            }
-            if (this.$route.path.includes('penthouses')) {
-                this.asideItems = routes[0].children[2].children || []
-                this.$store.commit('SET_ROUTES_LENGTH', this.asideItems.length)
-            }
-            if (this.$route.path.includes('choose')) {
-                this.asideItems = routes[0].children[3].children || []
-                this.$store.commit('SET_ROUTES_LENGTH', this.asideItems.length)
-            }
         }
     }
 </script>
