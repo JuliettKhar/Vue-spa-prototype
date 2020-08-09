@@ -1,4 +1,9 @@
 # Vue-spa-prototype
+use Vue Vue Router, typescript
+
+```
+https://vue-spa-prototype-a99c6.firebaseapp.com/
+```
 
 ## Project setup
 ```
