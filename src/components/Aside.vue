@@ -15,16 +15,14 @@
 </template>
 
 <script lang="ts">
-    import {Component, Vue} from 'vue-property-decorator';
+    import {Component, Watch, Vue} from 'vue-property-decorator';
     import {routes} from "@/router/routes";
-    import {RouteConfig} from "vue-router";
 
     @Component({
         name: "Aside",
     })
 
     export default class Aside extends Vue {
-        private asideItems: RouteConfig[] = []
         private isActive: string | null | undefined = ''
 
         get currentRouteName(): string | null | undefined {
@@ -40,11 +38,18 @@
             routes[0].children.forEach((item) => {
                 currRoutes[item.name] = item?.children || []
             })
-            return currRoutes[this.$route.path.split('/')[1]]
+            const currRoutesArr = currRoutes[this.$route.path.split('/')[1]]
+            this.$store.commit('SET_ROUTES_LENGTH', currRoutesArr.length)
+            return currRoutesArr
         }
 
         onMenuItemClick(index: number): void {
             this.$store.commit('SET_PAGE_COUNT', index + 1)
+        }
+
+        @Watch('$route')
+        resetCounter() {
+            this.$store.commit('SET_PAGE_COUNT', 1)
         }
 
         mounted(): void {
